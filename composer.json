@@ -1,0 +1,21 @@
+{
+    "name": "art4es/finder",
+    "type": "library",
+    "require-dev": {
+        "phpunit/phpunit": "^8.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Art4es",
+            "email": "Art4es@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Art4es\\": "src/",
+            "Art4es\\Tests\\": "tests/"
+        }
+    },
+    "require": {}
+}
