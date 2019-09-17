@@ -4,10 +4,9 @@
 namespace Art4es\file;
 
 
-use phpDocumentor\Reflection\Types\Resource_;
-
 interface IFile
 {
-    public function open(string $mode = 'r'): Resource_;
+    public function open(string $mode = 'r');
+
     public function close(): bool;
 }
