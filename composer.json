@@ -17,5 +17,7 @@
             "Art4es\\Tests\\": "tests/"
         }
     },
-    "require": {}
+    "require": {
+        "php": ">=7.2"
+    }
 }
