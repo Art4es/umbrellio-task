@@ -22,19 +22,35 @@ class FileTest extends TestCase
 
     public function testOpenFile()
     {
-        $filePath = __DIR__ . '/files/test1.txt';
-        $file = new File($filePath);
-        $fileContent = $file->open();
-        $fileContent2 = fopen($filePath, 'r');
-        $firstFile = '';
-        $secondFile = '';
-        while (($line1 = fgetc($fileContent)) === true || ($line2 = fgetc($fileContent2)) === true) {
-            $firstFile .= $line1;
-            $secondFile .= $line2;
+        $filePath1 = __DIR__ . '/files/test1.txt';
+        $filePath3 = __DIR__ . '/files/test2.txt';
+        $file = new File($filePath1);
+        $fileStream = $file->open();
+        $fileContent1 = '';
+        while (($line = fgetc($fileStream)) !== false) {
+            $fileContent1 .= $line;
         }
-        $this->assertEquals($firstFile, $secondFile);
         $file->close();
-        fclose($fileContent2);
+
+        /** read file in vanila =) */
+        $fileStream = fopen($filePath1, 'r');
+        $fileContent2 = '';
+        while (($line = fgetc($fileStream)) !== false) {
+            $fileContent2 .= $line;
+        }
+        fclose($fileStream);
+
+        /** read another file */
+        $fileStream = fopen($filePath3, 'r');
+        $fileContent3 = '';
+        while (($line = fgetc($fileStream)) !== false) {
+            $fileContent3 .= $line;
+        }
+        fclose($fileStream);
+
+        $this->assertEquals($fileContent1, $fileContent2);
+        $this->assertNotEquals($fileContent1, $fileContent3);
+        $this->assertNotEquals($fileContent2, $fileContent3);
     }
 
     public function testCloseNotOpenedFile()
