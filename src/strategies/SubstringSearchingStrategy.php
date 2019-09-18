@@ -18,17 +18,20 @@ class SubstringSearchingStrategy implements IStrategy
     public function search(IFile $file)
     {
         $haystack = $file->open();
-        $result = [];
-        $lineNumber = 1;
-        while (($line = fgets($haystack)) !== false) {
-            $matches = $this->searchInLine($haystack);
-            foreach ($matches as $match) {
-                $result[] = ['line' => $lineNumber, 'position' => $match];
+        try {
+            $result = [];
+            $lineNumber = 1;
+            while (($line = fgets($haystack)) !== false) {
+                $matches = $this->searchInLine($haystack);
+                foreach ($matches as $match) {
+                    $result[] = ['line' => $lineNumber, 'position' => $match];
+                }
+                $lineNumber++;
             }
-            $lineNumber++;
+            return $result;
+        } finally {
+            $file->close();
         }
-        $file->close();
-        return $result;
     }
 
     private function searchInLine($line, $result = [], $offset = 0): array
