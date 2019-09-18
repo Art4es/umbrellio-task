@@ -1,3 +1,4 @@
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaat
-taaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaataaaaaaaaaaaaaaaaaaaaa
+012
+345
+678
+9
