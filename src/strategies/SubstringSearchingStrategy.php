@@ -42,4 +42,9 @@ class SubstringSearchingStrategy implements IStrategy
         }
         return $result;
     }
+
+    public function changeNeedleTo(string $newNeedle): void
+    {
+        $this->needle = $newNeedle;
+    }
 }
