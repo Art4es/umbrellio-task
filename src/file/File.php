@@ -9,19 +9,24 @@ use Art4es\exceptions\FileNotOpenedException;
 
 class File implements IFile
 {
-    private $filePath = '';
+    private $path;
     private $resource;
 
     public function __construct($filePath)
     {
-        $this->filePath = $filePath;
+        $this->path = $filePath;
+    }
+
+    public function getPath(): string
+    {
+        return $this->path;
     }
 
     public function open(string $mode = 'r')
     {
         try {
             if (empty($this->resource)) {
-                $this->resource = fopen($this->filePath, $mode);
+                $this->resource = fopen($this->path, $mode);
             }
         } catch (\Throwable $e) {
             throw new FileNotFoundException();
@@ -39,6 +44,7 @@ class File implements IFile
         $result = fclose($this->resource);
         $this->resource = null;
         return $result;
-
     }
+
+
 }

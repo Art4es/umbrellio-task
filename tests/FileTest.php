@@ -11,6 +11,13 @@ use PHPUnit\Framework\TestCase;
 
 class FileTest extends TestCase
 {
+    public function testSetupFilePath()
+    {
+        $filePath = __DIR__ . '/files/notExistedFile.txt';
+        $file = new File($filePath);
+        $this->assertEquals($filePath, $file->getPath());
+    }
+
     public function testNotExistedFile()
     {
         $filePath = __DIR__ . '/files/notExistedFile.txt';

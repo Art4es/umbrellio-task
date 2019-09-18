@@ -8,6 +8,9 @@ use Art4es\exceptions\FileNotFoundException;
 
 interface IFile
 {
+
+    public function getPath(): string;
+
     /**
      * @param string $mode
      * @return resource
