@@ -4,8 +4,8 @@
 namespace Art4es\Tests;
 
 
-use Art4es\exceptions\FileNotFoundException;
-use Art4es\exceptions\FileNotOpenedException;
+use Art4es\exceptions\file\FileNotFoundException;
+use Art4es\exceptions\file\FileNotOpenedException;
 use Art4es\file\File;
 use PHPUnit\Framework\TestCase;
 

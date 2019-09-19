@@ -4,7 +4,7 @@
 namespace Art4es\file;
 
 
-use Art4es\exceptions\FileNotFoundException;
+use Art4es\exceptions\file\FileNotFoundException;
 
 interface IFile
 {
@@ -19,9 +19,4 @@ interface IFile
     public function open(string $mode = 'r');
 
     public function close(): bool;
-
-    /**
-     * @throws FileNotFoundException
-     */
-    public function checkExisting(): void;
 }

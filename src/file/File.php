@@ -4,8 +4,8 @@
 namespace Art4es\file;
 
 
-use Art4es\exceptions\FileNotFoundException;
-use Art4es\exceptions\FileNotOpenedException;
+use Art4es\exceptions\file\FileNotFoundException;
+use Art4es\exceptions\file\FileNotOpenedException;
 
 class File implements IFile
 {
@@ -24,9 +24,12 @@ class File implements IFile
 
     public function open(string $mode = 'r')
     {
-        $this->checkExisting();
-        if (empty($this->resource)) {
-            $this->resource = fopen($this->path, $mode);
+        try {
+            if (empty($this->resource)) {
+                $this->resource = fopen($this->path, $mode);
+            }
+        } catch (\Throwable $e) {
+            throw new FileNotFoundException();
         }
         return $this->resource;
     }
@@ -40,18 +43,5 @@ class File implements IFile
         $result = fclose($this->resource);
         $this->resource = null;
         return $result;
-    }
-
-    public function checkExisting(): void
-    {
-        try {
-            $fileStream = fopen($this->path, 'r');
-            if (!$fileStream) {
-                throw new FileNotFoundException();
-            }
-        } catch (\Throwable $e) {
-            throw new FileNotFoundException();
-        }
-        fclose($fileStream);
     }
 }
