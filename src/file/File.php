@@ -27,6 +27,9 @@ class File implements IFile
         try {
             if (empty($this->resource)) {
                 $this->resource = fopen($this->path, $mode);
+                if (!$this->resource) {
+                    throw new FileNotFoundException();
+                }
             }
         } catch (\Throwable $e) {
             throw new FileNotFoundException();
