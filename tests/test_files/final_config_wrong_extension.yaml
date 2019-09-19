@@ -1,0 +1,7 @@
+mime_types:
+  - 'text/plain'
+extension:
+  - 'pdf'
+file_size:
+  min: 10
+  max: 60

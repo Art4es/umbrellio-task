@@ -1,0 +1,7 @@
+mime_types:
+  - 'text/plain'
+extension:
+  - 'txt'
+file_size:
+  min: 1000
+  max: 60

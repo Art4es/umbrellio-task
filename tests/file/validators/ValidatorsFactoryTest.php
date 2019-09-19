@@ -79,4 +79,29 @@ class ValidatorsFactoryTest extends TestCase
         $parser->getValidators();
     }
 
+    public function testCreateMultipleValidators()
+    {
+        $parser = new YamlValidatorsProvider($this->baseFilePath . 'config.yaml');
+        $validators = $parser->getValidators();
+        $mimeValidatorsAmount = 0;
+        $extensionValidatorsAmount = 0;
+        $fileSizeValidatorsAmount = 0;
+        foreach ($validators as $validator) {
+            if ($validator instanceof MimeTypeValidator) {
+                $mimeValidatorsAmount++;
+            }
+            if ($validator instanceof ExtensionValidator) {
+                $extensionValidatorsAmount++;
+            }
+            if ($validator instanceof FileSizeValidator) {
+                $fileSizeValidatorsAmount++;
+            }
+        }
+
+        $this->assertEquals(1, $mimeValidatorsAmount);
+        $this->assertEquals(1, $extensionValidatorsAmount);
+        $this->assertEquals(1, $fileSizeValidatorsAmount);
+
+    }
+
 }
