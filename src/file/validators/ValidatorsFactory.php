@@ -1,14 +1,10 @@
 <?php
 
 
-namespace Art4es\config;
+namespace Art4es\file\validators;
 
 
 use Art4es\exceptions\validator\UndefinedValidatorException;
-use Art4es\file\validators\ExtensionValidator;
-use Art4es\file\validators\FileSizeValidator;
-use Art4es\file\validators\IValidator;
-use Art4es\file\validators\MimeTypeValidator;
 
 class ValidatorsFactory
 {
@@ -39,5 +35,17 @@ class ValidatorsFactory
             self::$validators[$validatorClass] = new $validatorClass($validatorParams);
         }
         return self::$validators;
+    }
+
+    public static function getAvailableValidators()
+    {
+        return self::$availableValidators;
+    }
+
+    public static function addToAvailableValidators(array $validator)
+    {
+        foreach ($validator as $validatorConfigName => $validatorClassName) {
+            self::$availableValidators[$validatorConfigName] = $validatorClassName;
+        }
     }
 }

@@ -30,4 +30,12 @@ class ExtensionValidator extends Validator
         }
         return true;
     }
+
+    /**
+     * @return array
+     */
+    public function getExtensions(): array
+    {
+        return $this->extensions;
+    }
 }

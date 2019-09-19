@@ -15,7 +15,7 @@ class MimeTypeValidator extends Validator
     {
         $this->mimeTypes = $params;
     }
-    
+
     /**
      * @param IFile $file
      * @return bool
@@ -28,5 +28,13 @@ class MimeTypeValidator extends Validator
             throw new MimeTypeDoesNotSupportException();
         }
         return true;
+    }
+
+    /**
+     * @return array
+     */
+    public function getMimeTypes(): array
+    {
+        return $this->mimeTypes;
     }
 }

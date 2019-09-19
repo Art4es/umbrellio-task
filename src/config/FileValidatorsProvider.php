@@ -8,8 +8,9 @@ use Art4es\exceptions\validator\UndefinedValidatorException;
 use Art4es\file\File;
 use Art4es\file\validators\FileExistingValidator;
 use Art4es\file\validators\IValidator;
+use Art4es\file\validators\ValidatorsFactory;
 
-abstract class FileValidatorsParser implements IValidatorsProvider
+abstract class FileValidatorsProvider implements IValidatorsProvider
 {
 
     protected $filePath;

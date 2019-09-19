@@ -4,7 +4,7 @@
 namespace Art4es\Tests\config;
 
 
-use Art4es\config\YamlValidatorsParser;
+use Art4es\config\YamlValidatorsProvider;
 use Art4es\exceptions\validator\FileDoesNotExistsException;
 use PHPUnit\Framework\TestCase;
 
@@ -16,13 +16,13 @@ class YamlValidatorsParserTest extends TestCase
     {
         $filePath = $this->fileBasePath . '/notExistingName.yaml';
         $this->expectException(FileDoesNotExistsException::class);
-        $yamlParser = new YamlValidatorsParser($filePath);
+        $yamlParser = new YamlValidatorsProvider($filePath);
     }
 
     public function testParsingFileContent()
     {
         $filePath = $this->fileBasePath . '/config.yaml';
-        $yamlParser = new YamlValidatorsParser($filePath);
+        $yamlParser = new YamlValidatorsProvider($filePath);
         $result = $yamlParser->parseFileContent();
         $expected = [
             'mime_types' => [

@@ -40,4 +40,20 @@ class FileSizeValidator extends Validator
         }
         return true;
     }
+
+    /**
+     * @return int
+     */
+    public function getMinSize()
+    {
+        return $this->minSize;
+    }
+
+    /**
+     * @return null|int
+     */
+    public function getMaxSize()
+    {
+        return $this->maxSize;
+    }
 }

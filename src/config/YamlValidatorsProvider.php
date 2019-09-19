@@ -4,7 +4,7 @@
 namespace Art4es\config;
 
 
-class YamlValidatorsParser extends FileValidatorsParser
+class YamlValidatorsProvider extends FileValidatorsProvider
 {
     public function parseFileContent(): array
     {
