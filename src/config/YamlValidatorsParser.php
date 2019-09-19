@@ -8,6 +8,6 @@ class YamlValidatorsParser extends FileValidatorsParser
 {
     public function parseFileContent(): array
     {
-        return yaml_parse($this->filePath);
+        return yaml_parse_file($this->filePath);
     }
 }

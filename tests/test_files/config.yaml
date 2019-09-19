@@ -1,0 +1,9 @@
+mime_types:
+  - 'text/plain'
+  - 'application/json'
+extension:
+  - 'bmp'
+  - 'jpeg'
+file_size:
+  min: 10
+  max: 60

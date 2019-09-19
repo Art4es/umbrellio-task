@@ -4,7 +4,7 @@
 namespace Art4es;
 
 
-use Art4es\config\IConfigParser;
+use Art4es\config\IValidatorsProvider;
 use Art4es\file\IFile;
 use Art4es\file\validators\FileExistingValidator;
 use Art4es\file\validators\IValidator;
@@ -17,13 +17,13 @@ class Finder implements IFinder
     /** @var IValidator[] */
     private $validators = [];
 
-    public function __construct(IFile $file, IStrategy $strategy, IConfigParser $parser = null)
+    public function __construct(IFile $file, IStrategy $strategy, IValidatorsProvider $validatorsProvider = null)
     {
         $this->file = $file;
         $this->strategy = $strategy;
 
-        if (!empty($parser)) {
-            foreach ($parser->getValidators() as $validator) {
+        if (!empty($validatorsProvider)) {
+            foreach ($validatorsProvider->getValidators() as $validator) {
                 array_push($this->validators, $validator);
             }
         }

@@ -5,10 +5,11 @@ namespace Art4es\config;
 
 
 use Art4es\exceptions\validator\UndefinedValidatorException;
+use Art4es\file\File;
 use Art4es\file\validators\FileExistingValidator;
 use Art4es\file\validators\IValidator;
 
-abstract class FileValidatorsParser implements IConfigParser
+abstract class FileValidatorsParser implements IValidatorsProvider
 {
 
     protected $filePath;
