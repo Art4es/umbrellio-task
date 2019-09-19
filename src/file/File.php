@@ -24,17 +24,10 @@ class File implements IFile
 
     public function open(string $mode = 'r')
     {
-        try {
-            if (empty($this->resource)) {
-                $this->resource = fopen($this->path, $mode);
-                if (!$this->resource) {
-                    throw new FileNotFoundException();
-                }
-            }
-        } catch (\Throwable $e) {
-            throw new FileNotFoundException();
+        $this->checkExisting();
+        if (empty($this->resource)) {
+            $this->resource = fopen($this->path, $mode);
         }
-
         return $this->resource;
     }
 
@@ -49,5 +42,16 @@ class File implements IFile
         return $result;
     }
 
-
+    public function checkExisting()
+    {
+        try {
+            $fileStream = fopen($this->path, 'r');
+            if (!$fileStream) {
+                throw new FileNotFoundException();
+            }
+        } catch (\Throwable $e) {
+            throw new FileNotFoundException();
+        }
+        fclose($fileStream);
+    }
 }
