@@ -11,16 +11,18 @@ use PHPUnit\Framework\TestCase;
 
 class FileTest extends TestCase
 {
+    public $baseFilePath = __DIR__ . '/../test_files/';
+
     public function testSetupFilePath()
     {
-        $filePath = __DIR__ . '/test_files/notExistedFile.txt';
+        $filePath = $this->baseFilePath . '/notExistedFile.txt';
         $file = new File($filePath);
         $this->assertEquals($filePath, $file->getPath());
     }
 
     public function testNotExistedFile()
     {
-        $filePath = __DIR__ . '/test_files/notExistedFile.txt';
+        $filePath = $this->baseFilePath . 'notExistedFile.txt';
         $file = new File($filePath);
         $this->expectException(FileNotFoundException::class);
         $file->open();
@@ -29,8 +31,8 @@ class FileTest extends TestCase
 
     public function testOpenFile()
     {
-        $filePath1 = __DIR__ . '/test_files/test1.txt';
-        $filePath3 = __DIR__ . '/test_files/test2.txt';
+        $filePath1 = $this->baseFilePath . '/test1.txt';
+        $filePath3 = $this->baseFilePath . '/test2.txt';
         $file = new File($filePath1);
         $fileStream = $file->open();
         $fileContent1 = '';
@@ -62,7 +64,7 @@ class FileTest extends TestCase
 
     public function testCloseNotOpenedFile()
     {
-        $filePath = __DIR__ . '/test_files/test1.txt';
+        $filePath = $this->baseFilePath . '/test1.txt';
         $file = new File($filePath);
         $this->expectException(FileNotOpenedException::class);
         $file->close();

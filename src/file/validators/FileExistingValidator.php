@@ -12,9 +12,10 @@ class FileExistingValidator implements IValidator
 
     /**
      * @param IFile $file
+     * @return bool
      * @throws FileDoesNotExistsException
      */
-    public function validate(IFile $file)
+    public function validate(IFile $file): bool
     {
         try {
             $fileStream = fopen($file->getPath(), 'r');
@@ -24,6 +25,6 @@ class FileExistingValidator implements IValidator
         } catch (\Throwable $e) {
             throw new FileDoesNotExistsException();
         }
-        fclose($fileStream);
+        return fclose($fileStream);
     }
 }

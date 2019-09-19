@@ -11,7 +11,8 @@ interface IValidator
 {
     /**
      * @param IFile $file
+     * @return bool
      * @throws ValidatorException
      */
-    public function validate(IFile $file);
+    public function validate(IFile $file): bool;
 }

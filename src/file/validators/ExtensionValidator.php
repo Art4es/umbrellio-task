@@ -19,13 +19,15 @@ class ExtensionValidator implements IValidator
 
     /**
      * @param IFile $file
+     * @return bool
      * @throws ExtensionDoesNotSupportException
      */
-    public function validate(IFile $file)
+    public function validate(IFile $file): bool
     {
         $info = new \SplFileInfo($file->getPath());
         if (!in_array($info->getExtension(), $this->extensions)) {
             throw new ExtensionDoesNotSupportException();
         }
+        return true;
     }
 }

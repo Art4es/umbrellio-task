@@ -20,9 +20,10 @@ class FileSizeValidator implements IValidator
 
     /**
      * @param IFile $file
+     * @return bool
      * @throws IncorrectFileSizeException
      */
-    public function validate(IFile $file)
+    public function validate(IFile $file): bool
     {
         $fileSize = filesize($file->getPath());
         if ($fileSize < $this->minSize) {
@@ -34,5 +35,6 @@ class FileSizeValidator implements IValidator
                 throw new IncorrectFileSizeException();
             }
         }
+        return true;
     }
 }

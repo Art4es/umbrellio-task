@@ -18,13 +18,15 @@ class MimeTypeValidator implements IValidator
 
     /**
      * @param IFile $file
+     * @return bool
      * @throws MimeTypeDoesNotSupportException
      */
-    public function validate(IFile $file)
+    public function validate(IFile $file): bool
     {
         $mimeType = mime_content_type($file->getPath());
         if (!in_array($mimeType, $this->mimeTypes)) {
             throw new MimeTypeDoesNotSupportException();
         }
+        return true;
     }
 }
