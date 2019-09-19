@@ -19,4 +19,9 @@ interface IFile
     public function open(string $mode = 'r');
 
     public function close(): bool;
+
+    /**
+     * @throws FileNotFoundException
+     */
+    public function checkExisting(): void;
 }

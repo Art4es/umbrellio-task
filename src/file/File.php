@@ -42,7 +42,7 @@ class File implements IFile
         return $result;
     }
 
-    public function checkExisting()
+    public function checkExisting(): void
     {
         try {
             $fileStream = fopen($this->path, 'r');
