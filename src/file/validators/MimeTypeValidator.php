@@ -7,15 +7,15 @@ namespace Art4es\file\validators;
 use Art4es\exceptions\validator\MimeTypeDoesNotSupportException;
 use Art4es\file\IFile;
 
-class MimeTypeValidator implements IValidator
+class MimeTypeValidator extends Validator
 {
     private $mimeTypes = [];
 
-    public function __construct(array $availableMimeTypes = [])
+    public function configure(array $params = []): void
     {
-        $this->mimeTypes = $availableMimeTypes;
+        $this->mimeTypes = $params;
     }
-
+    
     /**
      * @param IFile $file
      * @return bool

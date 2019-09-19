@@ -7,15 +7,18 @@ namespace Art4es\file\validators;
 use Art4es\exceptions\validator\IncorrectFileSizeException;
 use Art4es\file\IFile;
 
-class FileSizeValidator implements IValidator
+class FileSizeValidator extends Validator
 {
+    const MIN = 'min';
+    const MAX = 'max';
+
     private $minSize;
     private $maxSize;
 
-    public function __construct($minSize = 0, $maxSize = null)
+    function configure(array $params = []): void
     {
-        $this->minSize = $minSize;
-        $this->maxSize = $maxSize;
+        $this->minSize = $params[self::MIN] ?? 0;
+        $this->maxSize = $params[self::MAX] ?? null;
     }
 
     /**

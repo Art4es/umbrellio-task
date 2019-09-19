@@ -9,7 +9,7 @@ use Art4es\file\File;
 use Art4es\file\validators\FileExistingValidator;
 use PHPUnit\Framework\TestCase;
 
-class TestFileDoesNotExistsException extends TestCase
+class FileDoesNotExistsExceptionTest extends TestCase
 {
     public function testThrowingException()
     {

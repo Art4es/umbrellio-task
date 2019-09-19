@@ -7,8 +7,11 @@ namespace Art4es\file\validators;
 use Art4es\exceptions\validator\FileDoesNotExistsException;
 use Art4es\file\IFile;
 
-class FileExistingValidator implements IValidator
+class FileExistingValidator extends Validator
 {
+    function configure(array $params = []): void
+    {
+    }
 
     /**
      * @param IFile $file
@@ -27,4 +30,6 @@ class FileExistingValidator implements IValidator
         }
         return fclose($fileStream);
     }
+
+
 }

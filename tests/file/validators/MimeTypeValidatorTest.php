@@ -9,7 +9,7 @@ use Art4es\file\File;
 use Art4es\file\validators\MimeTypeValidator;
 use PHPUnit\Framework\TestCase;
 
-class TestMimeTypeValidator extends TestCase
+class MimeTypeValidatorTest extends TestCase
 {
     public function testThrowingException()
     {

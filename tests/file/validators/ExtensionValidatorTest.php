@@ -9,7 +9,7 @@ use Art4es\file\File;
 use Art4es\file\validators\ExtensionValidator;
 use PHPUnit\Framework\TestCase;
 
-class TestExtensionValidator extends TestCase
+class ExtensionValidatorTest extends TestCase
 {
     public function testThrowingException()
     {

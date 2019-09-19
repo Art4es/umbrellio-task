@@ -7,14 +7,14 @@ namespace Art4es\file\validators;
 use Art4es\exceptions\validator\ExtensionDoesNotSupportException;
 use Art4es\file\IFile;
 
-class ExtensionValidator implements IValidator
+class ExtensionValidator extends Validator
 {
 
     private $extensions = [];
 
-    public function __construct(array $availableExtensions = [])
+    function configure(array $params = []): void
     {
-        $this->extensions = $availableExtensions;
+        $this->extensions = $params;
     }
 
     /**
