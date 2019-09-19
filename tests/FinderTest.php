@@ -23,7 +23,7 @@ class FinderTest extends TestCase
 
     public function testValidatorDoesNotBreakCommonBehavior()
     {
-        $file = new File(__DIR__ . '/files/test2.txt');
+        $file = new File(__DIR__ . '/test_files/test2.txt');
         $strategy = new SubstringSearchingStrategy('7');
         $finder = new Finder($file, $strategy);
         $result = $finder->execute();

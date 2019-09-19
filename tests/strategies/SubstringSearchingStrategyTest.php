@@ -10,11 +10,11 @@ use PHPUnit\Framework\TestCase;
 
 class SubstringSearchingStrategyTest extends TestCase
 {
-
+    public $baseFilePath = __DIR__ . '/../test_files/';
 
     public function testSearchMultipleResults()
     {
-        $filePath = __DIR__ . '/files/test1.txt';
+        $filePath = $this->baseFilePath . '/test1.txt';
         $file = new File($filePath);
         $strategy = new SubstringSearchingStrategy('first');
         $result = $strategy->search($file);
@@ -28,7 +28,7 @@ class SubstringSearchingStrategyTest extends TestCase
 
     public function testSearchSingleResult()
     {
-        $filePath = __DIR__ . '/files/test2.txt';
+        $filePath = $this->baseFilePath . '/test2.txt';
         $file = new File($filePath);
         $strategy1 = new SubstringSearchingStrategy('3');
         $result1 = $strategy1->search($file);
@@ -40,7 +40,7 @@ class SubstringSearchingStrategyTest extends TestCase
 
     public function testMultipleMatchesInOneLine()
     {
-        $filePath = __DIR__ . '/files/test3.txt';
+        $filePath = $this->baseFilePath . '/test3.txt';
         $file = new File($filePath);
         $strategy = new SubstringSearchingStrategy('a');
         $result = $strategy->search($file);
@@ -59,7 +59,7 @@ class SubstringSearchingStrategyTest extends TestCase
     public function testChangingNeedle()
     {
 
-        $filePath = __DIR__ . '/files/test1.txt';
+        $filePath = $this->baseFilePath . '/test1.txt';
         $file = new File($filePath);
         $strategy = new SubstringSearchingStrategy('first');
         $result1 = $strategy->search($file);
